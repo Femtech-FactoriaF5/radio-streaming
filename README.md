@@ -30,7 +30,7 @@ Vamos a construir una aplicación para seleccionar y buscar emisoras de radio en
    - Crea una función en el componente App para realizar la búsqueda. Esta función realizará las siguientes tareas:
    - Asociará el valor recogido del control a la url de la api de búsqueda de emisoras:
         ```js
-        const url = "https://fr1.api.radio-browser.info/json/stations/byname/" + busqueda
+        const url = "http://95.179.139.106/json/stations/search?name=" + busqueda
         ```
 
    - Almacenará el resultado que devuelva la api en una variable de estado que sea un array.
