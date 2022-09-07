@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { ChangeEvent, useState } from 'react';
 import './App.css';
+import {IoPlay} from 'react-icons/io5';
 
 function App() {
   const [search,setSearch]=useState('');
@@ -31,7 +32,14 @@ function App() {
              onChange={handleChange} />
       <button name="search"
               onClick={getStations}>Buscar</button>
-      {search}
+    </section>
+    <section className='station-list'>
+{ list.length>0?
+      <ul>
+        {list.map((station:any,i) =>
+          <li key={i}>{station.name} <IoPlay style={{cursor:'pointer'}}/></li>)}
+      </ul>:<p>"No se han encontrado emisoras para esta búsqueda"</p>
+  }
     </section>
     </>
   );
