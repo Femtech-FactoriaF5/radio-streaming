@@ -29,7 +29,7 @@ function App() {
       audio.play()};
     if(playing) audio.pause();
     console.log('audio',audio.paused);
-    setPlaying(previous => !previous)
+    setPlaying(p=>!p)
   }
   return (
     <>
