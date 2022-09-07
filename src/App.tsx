@@ -6,6 +6,7 @@ import {IoPlay} from 'react-icons/io5';
 function App() {
   const [search,setSearch]=useState('');
   const [list, setList]=useState([]);
+  const [playing,setPlaying]=useState(false);
   const handleChange = (e: ChangeEvent<HTMLInputElement> /* Forma elegante de tipar el elemento */)=>{
     // forma cutre de tipar el elemento input
     // setSearch((e.target as HTMLInputElement).value);
@@ -19,6 +20,16 @@ function App() {
         setList(result.data)} )
       .catch(error=>console.error(error))
     // console.log('hola')
+  }
+  const playRadio=(radio:any)=>{
+    console.log('playing', playing);
+    let audio:any;
+    if(!playing){
+      audio = new Audio(radio.url);
+      audio.play()};
+    if(playing) audio.pause();
+    console.log('audio',audio.paused);
+    setPlaying(previous => !previous)
   }
   return (
     <>
@@ -37,7 +48,8 @@ function App() {
 { list.length>0?
       <ul>
         {list.map((station:any,i) =>
-          <li key={i}>{station.name} <IoPlay style={{cursor:'pointer'}}/></li>)}
+          <li key={i}>{station.name}
+            <IoPlay style={{cursor:'pointer'}} onClick={()=>playRadio(station)}/></li>)}
       </ul>:<p>"No se han encontrado emisoras para esta búsqueda"</p>
   }
     </section>
